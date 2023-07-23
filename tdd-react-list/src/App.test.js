@@ -5,6 +5,6 @@ describe('App', () => {
   it('renders one item', () => {
     render(<App />);
     const listItems = screen.getAllByRole("listitem");
-    expect(listItems).toHaveLength(1)
+    expect(listItems.length).toEqual(1)
   })
 });
