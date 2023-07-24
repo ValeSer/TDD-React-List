@@ -69,7 +69,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-
-### `npm i -D enzyme` 
-
-This command will install Enzyme, which is a popular testing library for React applications. It allows you to shallow render components (without rendering child components), simulate events, access component state, and more.
