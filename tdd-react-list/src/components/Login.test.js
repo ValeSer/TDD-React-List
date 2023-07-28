@@ -12,3 +12,9 @@ it('password input should be rendered', () => {
   const passwordInputEl = screen.getByPlaceholderText(/password/i);
   expect(passwordInputEl).toBeInTheDocument();
 });
+
+it('button input should be rendered', () => {
+  render(<Login/>);
+  const buttonInputEl = screen.getByRole("button");
+  expect(buttonInputEl).toBeInTheDocument();
+});
