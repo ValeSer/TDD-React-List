@@ -18,3 +18,9 @@ it('button input should be rendered', () => {
   const buttonInputEl = screen.getByRole("button");
   expect(buttonInputEl).toBeInTheDocument();
 });
+
+it('username input should be empty', () => {
+  render(<Login/>);
+  const userInputEl = screen.getByPlaceholderText(/username/i);
+  expect(userInputEl.value).toBe("");
+});
