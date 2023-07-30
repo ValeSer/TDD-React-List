@@ -24,3 +24,9 @@ it('username input should be empty', () => {
   const userInputEl = screen.getByPlaceholderText(/username/i);
   expect(userInputEl.value).toBe("");
 });
+
+it('password input should be empty', () => {
+  render(<Login/>);
+  const passwordInputEl = screen.getByPlaceholderText(/username/i);
+  expect(passwordInputEl.value).toBe("");
+});
