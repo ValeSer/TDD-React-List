@@ -27,6 +27,6 @@ it('username input should be empty', () => {
 
 it('password input should be empty', () => {
   render(<Login/>);
-  const passwordInputEl = screen.getByPlaceholderText(/username/i);
+  const passwordInputEl = screen.getByPlaceholderText(/password/i);
   expect(passwordInputEl.value).toBe("");
 });
