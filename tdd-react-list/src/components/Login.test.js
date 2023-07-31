@@ -36,3 +36,9 @@ it('button input should be disabled', () => {
   const buttonInputEl = screen.getByRole("button");
   expect(buttonInputEl).toBeDisabled();
 });
+
+it('error message should not be visible', () => {
+  render(<Login />);
+  const errorEl = screen.getByTestId('error');
+  expect(errorEl).not.toBeVisible()
+});
