@@ -5,7 +5,7 @@ export const Login = () => {
         <input type="text" placeholder="username" />
         <input type="password" placeholder="password" />
         <button disabled="true">Login </button>
-        <span>Something went wrong</span>
+        <span data-testid="error">Something went wrong</span>
       </form>
     </div>
   );
