@@ -3,8 +3,8 @@ import { Login } from './Login';
 
 it('username input should be rendered', () => {
   render(<Login/>);
-  const userInputEl = screen.getByPlaceholderText(/username/i);
-  expect(userInputEl).toBeInTheDocument();
+  const usernameInputEl = screen.getByPlaceholderText(/username/i);
+  expect(usernameInputEl).toBeInTheDocument();
 });
 
 it('password input should be rendered', () => {
