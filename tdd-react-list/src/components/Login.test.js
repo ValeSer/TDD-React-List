@@ -1,5 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { Login } from './Login';
+import { act } from 'react-dom/test-utils'
 
 jest.mock('axios', () => ({
   __esModule:true,
@@ -91,7 +92,7 @@ it('button should not be disabled when input exists', () => {
   expect(buttonInputEl).not.toBeDisabled();
 });
 
-it('loading should be rendered when click', () => {
+it('loading should be rendered when click', async () => {
   render(<Login/>);
   const buttonEl = screen.getByRole("button");
   const usernameInputEl = screen.getByPlaceholderText(/username/i);
@@ -103,7 +104,7 @@ it('loading should be rendered when click', () => {
   fireEvent.change(passwordInputEl, { target: { value: testValue } });
   fireEvent.click(buttonEl);
 
-  expect(buttonEl).toHaveTextContent(/please wait/i);
+  await waitFor(() => expect(buttonEl).toHaveTextContent(/please wait/i));
 });
 
 it('loading should not be visible after fetching', async () => {

@@ -11,14 +11,15 @@ export const Login = () => {
   const clickHandler = async (e) => {
     e.preventDefault();
     setLoading(true);
-    try{
-      const {data} = await axios.get(
+    try {
+      const { data } = await axios.get(
         "https://jsonplaceholder.typicode.com/users/1"
         );
       setUser(data);
-    }catch{
+    } catch {
       setError(true);
     }
+    setLoading(false);
   };
 
   return (
