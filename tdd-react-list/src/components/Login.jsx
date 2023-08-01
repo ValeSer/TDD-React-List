@@ -1,6 +1,7 @@
 import { useState } from "react";
 export const Login = () => {
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [user, setUser] = useState({});
@@ -8,7 +9,7 @@ export const Login = () => {
   const clickHandler = async (e) => {
     e.preventDefault();
     try{
-      const {data} = axios.get(
+      const {data} = await axios.get(
         "https://jsonplaceholder.typicode.com/users/1"
         );
         setUser(data);
@@ -37,7 +38,7 @@ export const Login = () => {
           disabled={!username || !password}
           onClick={clickHandler}
         >
-          Login 
+          {loading ? "please wait" : "Login"} 
         </button>
         <span 
           data-testid="error"
