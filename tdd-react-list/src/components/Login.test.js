@@ -1,6 +1,15 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { Login } from './Login';
-//import axios from 'axios';
+
+jest.mock('axios', () => ({
+  __esModule:true,
+
+  default:{
+    get: () => ({
+      data:{id:1, name:"John"}
+    })
+  }
+}))
 
 it('username input should be rendered', () => {
   render(<Login/>);
