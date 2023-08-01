@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { Login } from './Login';
-import axios from 'axios';
+//import axios from 'axios';
 
 it('username input should be rendered', () => {
   render(<Login/>);
@@ -92,7 +92,7 @@ it('loading should be rendered when click', () => {
 
   fireEvent.change(usernameInputEl, { target: { value: testValue } });
   fireEvent.change(passwordInputEl, { target: { value: testValue } });
-  fireEvent.change(buttonEl);
+  fireEvent.click(buttonEl);
 
   expect(buttonEl).toHaveTextContent(/please wait/i);
 });
