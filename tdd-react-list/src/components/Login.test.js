@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { Login } from './Login';
+import axios from 'axios';
 
 it('username input should be rendered', () => {
   render(<Login/>);
@@ -31,10 +32,16 @@ it('password input should be empty', () => {
   expect(passwordInputEl.value).toBe("");
 });
 
-it('button input should be disabled', () => {
+it('button should be disabled', () => {
   render(<Login/>);
-  const buttonInputEl = screen.getByRole("button");
-  expect(buttonInputEl).toBeDisabled();
+  const buttonEl = screen.getByRole("button");
+  expect(buttonEl).toBeDisabled();
+});
+
+it('loading should not be rendered', () => {
+  render(<Login/>);
+  const buttonEl = screen.getByRole("button");
+  expect(buttonEl).not.toHaveTextContent(/please wait/i);
 });
 
 it('error message should not be visible', () => {
@@ -73,4 +80,19 @@ it('button should not be disabled when input exists', () => {
   fireEvent.change(passwordInputEl, { target: { value: testValue } });
 
   expect(buttonInputEl).not.toBeDisabled();
+});
+
+it('loading should be rendered when click', () => {
+  render(<Login/>);
+  const buttonEl = screen.getByRole("button");
+  const usernameInputEl = screen.getByPlaceholderText(/username/i);
+  const passwordInputEl = screen.getByPlaceholderText(/password/i);
+
+  const testValue = 'test';
+
+  fireEvent.change(usernameInputEl, { target: { value: testValue } });
+  fireEvent.change(passwordInputEl, { target: { value: testValue } });
+  fireEvent.change(buttonEl);
+
+  expect(buttonEl).toHaveTextContent(/please wait/i);
 });
